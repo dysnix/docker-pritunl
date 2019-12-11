@@ -1,0 +1,15 @@
+#!/bin/bash
+## https://docs.docker.com/docker-hub/builds/advanced/
+
+## GIT_BRANCH equals both invoking branch or tag.
+## Strip of a release suffix
+_stripped=${DOCKER_REPO}:${GIT_BRANCH%-r*}
+if [ ${IMAGE_NAME} != ${_stripped} ]; then
+  docker image tag ${IMAGE_NAME} ${_stripped}
+  docker image push ${_stripped}
+fi
+
+## update microbadger
+if [ -n "$MICROBADGER_TOKEN" ]; then
+  curl -XPOST "https://hooks.microbadger.com/images/dysnix/gocd-agent-alpine/${MICROBADGER_TOKEN}"
+fi
