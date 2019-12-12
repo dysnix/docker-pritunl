@@ -2,7 +2,7 @@ FROM debian:buster-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN \
-  apt-get -y update && apt-get -y install curl gnupg iptables procps && \
+  apt-get -y update && apt-get -y install curl gnupg iptables procps netcat && \
   ## Install the latest version of Pritunl \
   ## \
   echo "deb http://repo.pritunl.com/stable/apt buster main" > /etc/apt/sources.list.d/pritunl.list && \
