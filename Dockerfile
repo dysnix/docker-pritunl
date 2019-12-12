@@ -17,3 +17,4 @@ RUN \
 
 COPY entrypoint.sh /
 ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["/usr/bin/pritunl", "start"]

@@ -7,4 +7,4 @@ elif [ -n "$PRITUNL_MONGODB_URI_TEMPLATE" ]; then
   pritunl set-mongodb $(eval echo -n "$PRITUNL_MONGODB_URI_TEMPLATE")
 fi
 
-exec pritunl start
+exec "$@"
