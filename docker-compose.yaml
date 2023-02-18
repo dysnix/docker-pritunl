@@ -20,6 +20,3 @@ services:
       - 8443:443
     environment:
       PRITUNL_MONGODB_URI: mongodb://pritunl:pritunl@mongodb:27017/pritunl
-      PRITUNL_OVERRIDE_CONF: /etc/pritunl/pritunl.conf
-    volumes:
-      - ./pritunl.conf:/etc/pritunl/pritunl.conf
