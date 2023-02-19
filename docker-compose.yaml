@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  mongodb:
+    image: bitnami/mongodb:4.4.15
+    platform: linux/amd64
+    environment:
+      MONGODB_EXTRA_FLAGS: --wiredTigerCacheSizeGB=0.5
+    env_file:
+      - .env
+  pritunl:
+    build:
+      context: .
+    platform: linux/amd64
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8443:443
+    env_file:
+      - .env
