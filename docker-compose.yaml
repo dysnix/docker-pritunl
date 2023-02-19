@@ -5,11 +5,9 @@ services:
     image: bitnami/mongodb:4.4.15
     platform: linux/amd64
     environment:
-      MONGODB_USERNAME: pritunl
-      MONGODB_DATABASE: pritunl
-      MONGODB_PASSWORD: pritunl
-      MONGODB_ROOT_PASSWORD: pritunl
       MONGODB_EXTRA_FLAGS: --wiredTigerCacheSizeGB=0.5
+    env_file:
+      - .env
   pritunl:
     build:
       context: .
@@ -18,5 +16,5 @@ services:
       - NET_ADMIN
     ports:
       - 8443:443
-    environment:
-      PRITUNL_MONGODB_URI: mongodb://pritunl:pritunl@mongodb:27017/pritunl
+    env_file:
+      - .env
